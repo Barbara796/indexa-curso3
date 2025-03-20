@@ -1,0 +1,89 @@
+<app-container>
+    <header>
+        <section class="encabezado-link">
+            <img src="logo.png" alt="">
+            <div>
+                <button>
+                  <img src="arrow-left.svg" alt="">
+                  <a routerLink="/lista-contactos">Regresar</a>
+                </button>
+              </div>
+        </section>
+        <section class="encabezado-contacto">
+            <img src="agregar-contacto.png" alt="">
+            <h1> Agregar nuevo contacto</h1>
+        </section>
+    </header>
+    <form [formGroup]="contactoForm" (ngSubmit)="guardarContacto()">
+        <label for="nombre">Nombre</label>
+        <input 
+            formControlName="nombre"
+            type="text"
+            id="nombre"
+            placeholder="Digita el nombre del contacto">
+            @if(contactoForm.get('nombre')?.errors && contactoForm.get('nombre')?.touched ){
+                <div class="mensaje-error">
+                    Campo obligatorio
+                </div>
+            }
+            
+        <label for="telefono">Telefono</label>
+        <input 
+            formControlName="telefono"
+            type="text"
+            id="telefono"
+            placeholder="Digita el telefono del contacto">
+            @if(contactoForm.get('telefono')?.errors && contactoForm.get('telefono')?.touched ){
+                <div class="mensaje-error">
+                    Campo obligatorio
+                </div>
+            }
+        <label for="email">Email</label>
+        <input 
+            formControlName="email"
+            type="email"
+            id="email"
+            placeholder="Digita el email del contacto">
+            @if(contactoForm.get('email')?.errors?.['required'] && contactoForm.get('email')?.touched ){
+                <div class="mensaje-error">
+                    Campo obligatorio
+                </div>
+            }
+            @if(contactoForm.get('email')?.errors?.['email'] && contactoForm.get('email')?.touched ){
+                <div class="mensaje-error">
+                    Formato incorrecto de correo
+                </div>
+            }
+            <app-separador></app-separador>
+            <label for="cumpleano">Cumpleaño</label>
+            <input 
+                formControlName="cumpleano"
+                type="date"
+                id="cumpleano"
+                placeholder="Digita la fecha de nacimiento del contacto">
+            <label for="redes">Redes sociales</label>
+            <div class="input-container ">
+                <span class="span-http">http://</span>
+                <input 
+                    type="text"
+                    formControlName="redes"
+                    >
+            </div>
+            
+        <label for="observaciones">Observaciones</label>
+        <textarea 
+            name="observaciones" 
+            id="observaciones"
+            formControlName="observaciones"
+            ></textarea>
+
+        <section class="botones">
+
+            <button (click)="cancelar()" class="boton-cancelar" type="button">Cancelar</button>
+            <button 
+                type="submit"
+                [disabled]="contactoForm.invalid"
+                [ngClass]="contactoForm.valid ?'boton-guardar':'boton-deshabilitado'"> Guardar contacto</button>
+        </section>
+    </form>
+</app-container>
