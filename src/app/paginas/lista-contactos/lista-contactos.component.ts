@@ -39,7 +39,10 @@ export class ListaContactosComponent implements OnInit {
   } */
 
   ngOnInit(){
-    this.contactos = this.contactoService.obtenerContactos();
+    this.contactoService.obtenerContactos().subscribe((listaContactos)=>{
+      this.contactos = listaContactos;
+
+    })
   }
 
   filtrarContactosPorTexto(): Contacto[] {
