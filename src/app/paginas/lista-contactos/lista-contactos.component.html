@@ -17,8 +17,14 @@
       <app-separador>{{letra}}</app-separador>
   
       @for(contacto of filtrarContactosPorLetraInicial(letra); track contacto.id ){
-      <app-contacto [nombre]="contacto.nombre" [telefono]="contacto.telefono"></app-contacto>
+      <app-contacto 
+        [nombre]="contacto.nombre" 
+        [telefono]="contacto.telefono"
+        [id]="contacto.id!.toString()">
+      </app-contacto>
       }
     }
   
   </app-container>
+
+  

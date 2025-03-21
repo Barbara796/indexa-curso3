@@ -1,0 +1,51 @@
+<app-container>
+    <header>
+        <section class="encabezado-link">
+            <img src="logo.png" alt="">
+            <div>
+                <button>
+                  <img src="arrow-left.svg" alt="">
+                  <a routerLink='/lista-contactos'>Regresar</a>
+                </button>
+              </div>
+        </section>
+        <section class="encabezado-contacto">
+            <img src="perfil-contacto.png" alt="">
+            <h1>Perfil del contacto</h1>
+        </section>
+    </header>
+    
+  <section class="perfil">
+    <ul>
+      <li>
+        <i class="material-icons">call</i>
+        <strong>Teléfono</strong>
+      </li>
+      <li>{{ contacto.telefono }}</li>
+      <li>
+        <i class="material-icons">mail</i>
+        <strong>Email</strong>
+      </li>
+      <li>{{ contacto.email }}</li>
+      <li>
+        <i class="material-icons">event_available</i>
+        <strong>Fecha de nacimiento</strong>
+      </li>
+      <li>{{ contacto.cumpleano}}</li>
+      <li>
+        <i class="material-icons">languaje</i>
+        <strong>Redes sociales</strong>
+      </li>
+      <li>{{ contacto.redes }}</li>
+    </ul>
+    <div class="botones">
+      <button class="boton-borrar">
+        Borrar contacto
+      </button>
+      <button class="boton-editar">
+        Editar
+      </button>
+    </div>
+  </section>
+
+</app-container>

@@ -57,9 +57,11 @@ export class FormularioComponent implements OnInit {
 
   guardarContacto(){
     const nuevoContacto = this.contactoForm.value;
-    this.contactoService.guardarContactos(nuevoContacto);
-    this.contactoForm.reset();
-    this.router.navigateByUrl('/lista-contactos')
+    this.contactoService.guardarContactos(nuevoContacto).subscribe(()=>{
+      this.contactoForm.reset();
+      this.router.navigateByUrl('/lista-contactos');
+    });
+   
   }
 
   cancelar(){

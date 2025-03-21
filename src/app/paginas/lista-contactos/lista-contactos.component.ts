@@ -8,6 +8,7 @@ import { Component, inject, OnInit } from "@angular/core"
 import { RouterLink } from "@angular/router"
 import { ContactosService } from "../../services/contactos.service"
 import { Contacto } from "../../componentes/contacto/contacto"
+import { PerfilContactoComponent } from "../perfil-contacto/perfil-contacto.component"
 
 
 
@@ -21,7 +22,8 @@ import { Contacto } from "../../componentes/contacto/contacto"
                 ContactoComponent,
                 CommonModule,
                 FormsModule,
-                RouterLink
+                RouterLink,
+                
   ],
   templateUrl: './lista-contactos.component.html',
   styleUrl: './lista-contactos.component.css'
