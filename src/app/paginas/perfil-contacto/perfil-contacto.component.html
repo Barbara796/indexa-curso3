@@ -1,19 +1,8 @@
 <app-container>
-    <header>
-        <section class="encabezado-link">
-            <img src="logo.png" alt="">
-            <div>
-                <button>
-                  <img src="arrow-left.svg" alt="">
-                  <a routerLink='/lista-contactos'>Regresar</a>
-                </button>
-              </div>
-        </section>
-        <section class="encabezado-contacto">
-            <img src="perfil-contacto.png" alt="">
-            <h1>Perfil del contacto</h1>
-        </section>
-    </header>
+  <app-encabezado
+    [bannerSrc]="'perfil-contacto.png'"
+    [titulo]="'Perfil del contacto'">
+  </app-encabezado>
     
   <section class="perfil">
     <div class="imagen-perfil">

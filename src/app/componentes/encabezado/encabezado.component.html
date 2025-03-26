@@ -1,6 +1,18 @@
 
 <header class="encabezado">
-    <img src="logo.png" alt="logo">
-    <img src="ilustracion-logo.png" alt="ilustración">
-    <h1 class="titulo">¡Organiza, <span>conecta,</span> simplifica!</h1>
+
+    @if(!pantallaInicial){
+        <div>
+            <button class="link">
+              <img class="seta" src="arrow-left.svg" alt="">
+              <a routerLink="/lista-contactos">Regresar</a>
+            </button>
+          </div>
+    }
+
+    <img [src]="bannerSrc()" class="banner">
+    <h1
+      [ngClass]="pantallaInicial() ? 'titulo' : 'titulo-form'"
+      [innerHTML]="titulo()">
+    </h1>
 </header>

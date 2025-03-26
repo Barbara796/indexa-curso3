@@ -5,6 +5,8 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ContactosService } from '../../services/contactos.service';
+import { MensajeErrorComponent } from '../../componentes/mensaje-error/mensaje-error.component';
+import { EncabezadoComponent } from '../../componentes/encabezado/encabezado.component';
 
 @Component({
   selector: 'app-formulario',
@@ -12,7 +14,9 @@ import { ContactosService } from '../../services/contactos.service';
             SeparadorComponent,
             ReactiveFormsModule,
             CommonModule,
-            RouterLink],
+            RouterLink,
+            MensajeErrorComponent,
+            EncabezadoComponent],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
@@ -99,5 +103,14 @@ export class FormularioComponent implements OnInit {
 
     reader.readAsDataURL(file)
     console.log("la imagen fue agregada")
+  }
+
+  obtenerControl(nombre: string): FormControl{
+    const control = this.contactoForm.get(nombre);
+    if(!control){
+      throw new Error("Controle de formulario não encontrado" + nombre);
+    }
+
+    return control as FormControl
   }
 }

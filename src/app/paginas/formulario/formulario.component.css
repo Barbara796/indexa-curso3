@@ -170,13 +170,6 @@ header .encabezado-link {
     cursor:not-allowed;
   }
   
-  .mensaje-error {
-    font-size: 16px;
-    color: red;
-    margin-bottom: 12px;
-    font-family: 'Montserrat';
-    
-  }
 
   .imagen-contacto {
     width: 104px;

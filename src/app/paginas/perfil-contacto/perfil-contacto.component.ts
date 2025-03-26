@@ -4,10 +4,14 @@ import { Contacto } from '../../componentes/contacto/contacto';
 import { Router, RouterLink } from '@angular/router';
 import { ContactosService } from '../../services/contactos.service';
 import { SeparadorComponent } from '../../componentes/separador/separador.component';
+import { EncabezadoComponent } from '../../componentes/encabezado/encabezado.component';
 
 @Component({
   selector: 'app-perfil-contacto',
-  imports: [ ContainerComponent, RouterLink, SeparadorComponent],
+  imports: [ ContainerComponent, 
+              RouterLink, 
+              SeparadorComponent,
+              EncabezadoComponent],
   templateUrl: './perfil-contacto.component.html',
   styleUrl: './perfil-contacto.component.css'
 })

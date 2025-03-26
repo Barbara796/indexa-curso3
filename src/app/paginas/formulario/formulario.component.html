@@ -1,19 +1,8 @@
 <app-container>
-    <header>
-        <section class="encabezado-link">
-            <img src="logo.png" alt="">
-            <div>
-                <button>
-                  <img src="arrow-left.svg" alt="">
-                  <a routerLink="/lista-contactos">Regresar</a>
-                </button>
-              </div>
-        </section>
-        <section class="encabezado-contacto">
-            <img src="agregar-contacto.png" alt="">
-            <h1> Agregar nuevo contacto</h1>
-        </section>
-    </header>
+    <app-encabezado
+      [bannerSrc]="'agregar-contacto.png'"
+      [titulo]="'Agregar nuevo contacto'">
+    </app-encabezado>
     <form [formGroup]="contactoForm" (ngSubmit)="guardarContacto()">
         <div role="button" class="imagen-contacto">
             <i class="material-icons">add</i>
@@ -37,11 +26,8 @@
             type="text"
             id="nombre"
             placeholder="Digita el nombre del contacto">
-            @if(contactoForm.get('nombre')?.errors && contactoForm.get('nombre')?.touched ){
-                <div class="mensaje-error">
-                    Campo obligatorio
-                </div>
-            }
+            <app-mensaje-error [control]="obtenerControl('nombre')"></app-mensaje-error>
+
             
         <label for="telefono">Telefono</label>
         <input 
@@ -49,27 +35,16 @@
             type="text"
             id="telefono"
             placeholder="Digita el telefono del contacto">
-            @if(contactoForm.get('telefono')?.errors && contactoForm.get('telefono')?.touched ){
-                <div class="mensaje-error">
-                    Campo obligatorio
-                </div>
-            }
+            <app-mensaje-error [control]="obtenerControl('telefono')"></app-mensaje-error>
+
         <label for="email">Email</label>
         <input 
             formControlName="email"
             type="email"
             id="email"
             placeholder="Digita el email del contacto">
-            @if(contactoForm.get('email')?.errors?.['required'] && contactoForm.get('email')?.touched ){
-                <div class="mensaje-error">
-                    Campo obligatorio
-                </div>
-            }
-            @if(contactoForm.get('email')?.errors?.['email'] && contactoForm.get('email')?.touched ){
-                <div class="mensaje-error">
-                    Formato incorrecto de correo
-                </div>
-            }
+            <app-mensaje-error [control]="obtenerControl('email')"></app-mensaje-error>
+
             <app-separador></app-separador>
             <label for="cumpleano">Cumpleaño</label>
             <input 
