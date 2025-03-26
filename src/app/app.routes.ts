@@ -6,6 +6,7 @@ import { PerfilContactoComponent } from './paginas/perfil-contacto/perfil-contac
 export const routes: Routes = [
     { path:'lista-contactos', component: ListaContactosComponent},
     { path: 'formulario', component:FormularioComponent},
+    { path: 'formulario/:id', component:FormularioComponent},
     {path:'', redirectTo:'lista-contactos', pathMatch:'full'},
     {path:'perfil-contacto/:id', component:PerfilContactoComponent}
     

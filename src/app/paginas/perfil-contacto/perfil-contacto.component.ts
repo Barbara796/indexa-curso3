@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ContainerComponent } from '../../componentes/container/container.component';
 import { Contacto } from '../../componentes/contacto/contacto';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ContactosService } from '../../services/contactos.service';
 
 @Component({
@@ -13,7 +13,8 @@ import { ContactosService } from '../../services/contactos.service';
 export class PerfilContactoComponent implements OnInit {
 
   @Input() id: string = '';
-  contactoService = inject(ContactosService)
+  contactoService = inject(ContactosService);
+  router = inject(Router);
 
   contacto: Contacto = {
     id: 0,
@@ -31,6 +32,11 @@ export class PerfilContactoComponent implements OnInit {
       })
     }
 
+  }
+
+  borrar(){
+    this.contactoService.borrarContacto(this.contacto.id).
+      subscribe(()=> this.router.navigateByUrl('/lista-contactos'))
   }
 
 }

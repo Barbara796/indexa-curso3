@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ContainerComponent } from '../../componentes/container/container.component';
 import { SeparadorComponent } from '../../componentes/separador/separador.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -24,11 +24,13 @@ export class FormularioComponent implements OnInit {
   fb = inject(FormBuilder);
   contactoService = inject(ContactosService);
   router = inject(Router);
+  @Input() id:string = "";
 
  
 
   ngOnInit(){
     this.inicializarForms();
+    this.cargarContacto();
   }
 
   inicializarForms(){
@@ -56,15 +58,26 @@ export class FormularioComponent implements OnInit {
   } */
 
   guardarContacto(){
-    const nuevoContacto = this.contactoForm.value;
-    this.contactoService.guardarContactos(nuevoContacto).subscribe(()=>{
-      this.contactoForm.reset();
-      this.router.navigateByUrl('/lista-contactos');
-    });
-   
+      const nuevoContacto = this.contactoForm.value;
+ 
+     nuevoContacto.id = this.id ? parseInt(this.id) : null;
+ 
+      this.contactoService.editarOGuardarContacto(nuevoContacto).subscribe(()=>{
+       this.contactoForm.reset();
+       this.router.navigateByUrl('/lista-contactos');
+      });
+   }
+
+   cargarContacto(){
+    if (this.id) {
+      this.contactoService.buscarPorId(parseInt(this.id)).subscribe((contacto) => {
+        this.contactoForm.patchValue(contacto)
+      });
+    } 
   }
 
   cancelar(){
     this.contactoForm.reset();
+    this.router.navigateByUrl('/lista-contactos');
   }
 }

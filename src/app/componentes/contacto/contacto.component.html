@@ -4,7 +4,7 @@
            <strong> {{ nombre() }} </strong>
         </li>
         <li>{{ telefono() }}</li>
-        <button>
+        <button [routerLink]="['/formulario', id]">
             <img src="pencil-square.svg" alt="lapiz">
         </button>
         <button [routerLink]="['/perfil-contacto', id]">

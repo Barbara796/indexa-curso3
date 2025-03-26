@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 
 export class ContactosService {
 
-  private readonly API = "https://67dc2a171fd9e43fe4777b22.mockapi.io/contactos";
+  private readonly API = "https://67e2af2797fc65f535372797.mockapi.io/indexa/contactos";
   http = inject(HttpClient);
   
 
@@ -25,9 +25,28 @@ export class ContactosService {
     return this.http.post<Contacto>(this.API, contacto)
   }
 
-  buscarPorId(id:number):Observable<Contacto>{
+  buscarPorId(id: number): Observable<Contacto> {
     const url = `${this.API}/${id}`
-    return this.http.get<Contacto>(url);
+    return this.http.get<Contacto>(url)
+  }
+
+  borrarContacto(id: number): Observable<Contacto> {
+    const url = `${this.API}/${id}`
+    return this.http.delete<Contacto>(url)
+  }
+
+  editarContacto(contacto: Contacto): Observable<Contacto> {
+    const url = `${this.API}/${contacto.id}`
+    return this.http.put<Contacto>(url,contacto)
+  }
+
+  editarOGuardarContacto(contacto: Contacto): Observable<Contacto>{
+      if(contacto.id){
+        return this.editarContacto(contacto);
+      }
+      else {
+        return this.guardarContactos(contacto);
+      }
   }
 }
 
