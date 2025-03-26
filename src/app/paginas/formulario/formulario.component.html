@@ -15,6 +15,22 @@
         </section>
     </header>
     <form [formGroup]="contactoForm" (ngSubmit)="guardarContacto()">
+        <div role="button" class="imagen-contacto">
+            <i class="material-icons">add</i>
+            <label for="avatar">Agregar la imagen del contacto</label>
+            <input
+            type="file"
+            accept="image/*"
+            id="avatar"
+            required
+            (change)="seleccionarArchivo($event)"
+            >
+        </div>
+        @if(contactoForm.get('avatar')?.value !==''){
+            <figure>
+                <img [src]="contactoForm.get('avatar')?.value" alt="Imagen del contacto">
+            </figure>
+        }
         <label for="nombre">Nombre</label>
         <input 
             formControlName="nombre"

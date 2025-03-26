@@ -38,6 +38,7 @@ export class FormularioComponent implements OnInit {
       nombre: ['',Validators.required],
       telefono: ['', Validators.required],
       email: ['',[Validators.required,Validators.email]],
+      avatar: ['', Validators.required],
       cumpleano: [''],
       redes: [''],
       observaciones: [''],
@@ -79,5 +80,24 @@ export class FormularioComponent implements OnInit {
   cancelar(){
     this.contactoForm.reset();
     this.router.navigateByUrl('/lista-contactos');
+  }
+
+  seleccionarArchivo(event: any){
+    const file : File = event.target.files[0];
+    if(file){
+      this.leerArchivo(file)
+    }
+  }
+
+  leerArchivo(file: File){
+    const reader = new FileReader();
+    reader.onload = () => {
+      if(reader.result){
+        this.contactoForm.get('avatar')?.setValue(reader.result as string)
+      }
+    }
+
+    reader.readAsDataURL(file)
+    console.log("la imagen fue agregada")
   }
 }

@@ -13,6 +13,7 @@ export class ContactoComponent {
 
   nombre = input<string>("");
   telefono = input<string>("");
+  avatar = input< string | ArrayBuffer>(""); 
   @Input() id:string = "";
 
 }

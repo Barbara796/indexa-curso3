@@ -3,6 +3,7 @@ export interface Contacto {
     nombre: string,
     telefono: string,
     email: string,
+    avatar: string |ArrayBuffer
     cumpleano?: string,
     redes?:string,
     observaciones?:string
