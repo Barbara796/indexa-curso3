@@ -10,10 +10,8 @@ import { ContactosService } from '../../services/contactos.service';
   templateUrl: './perfil-contacto.component.html',
   styleUrl: './perfil-contacto.component.css'
 })
-export class PerfilContactoComponent implements OnInit {
+export class PerfilContactoComponent  {
 
-  @Input() id: string = '';
-  contactoService = inject(ContactosService)
 
   contacto: Contacto = {
     id: 0,
@@ -24,13 +22,6 @@ export class PerfilContactoComponent implements OnInit {
     redes: ''
   }
 
-  ngOnInit() {
-    if(this.id){
-      this.contactoService.buscarPorId(parseInt(this.id)).subscribe((contacto)=>{
-        this.contacto = contacto;
-      })
-    }
-
-  }
+  
 
 }

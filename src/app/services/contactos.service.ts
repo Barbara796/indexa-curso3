@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 
 export class ContactosService {
 
-  private readonly API = "https://67dc2a171fd9e43fe4777b22.mockapi.io/contactos";
+  private readonly API = "AGREGUE EL ENDPOINT DE TU ACÁ ";
   http = inject(HttpClient);
   
 
@@ -25,10 +25,7 @@ export class ContactosService {
     return this.http.post<Contacto>(this.API, contacto)
   }
 
-  buscarPorId(id:number):Observable<Contacto>{
-    const url = `${this.API}/${id}`
-    return this.http.get<Contacto>(url);
-  }
+ 
 }
 
 
