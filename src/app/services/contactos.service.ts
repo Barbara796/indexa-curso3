@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 
 export class ContactosService {
 
-  private readonly API = "https://67e2af2797fc65f535372797.mockapi.io/indexa/contactos";
+  private readonly API = "AGREGUE EL ENDPOINT DE TU API ACÁ";
   http = inject(HttpClient);
   
 
